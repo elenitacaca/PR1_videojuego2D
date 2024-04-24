@@ -2,19 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movpersonaje : MonoBehaviour
+public class Movpersonaje : MonoBehaviour
 {
 
     public float multiplicadorVelocidad = 1;
     public float multiplicadorSalto = 1;
     Rigidbody2D rb;
     SpriteRenderer sr;
+
+    public bool puedoSaltar = true;
+    
+    public void Respawnear(){
+    transform.position = respawn.transform.position;
+    }
+    GameObject respawn;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
-
+        respawn = GameObject.Find("respawn");
+        Respawnear();
     }
 
     // Update is called once per frame
@@ -33,21 +42,40 @@ public class movpersonaje : MonoBehaviour
         {
             sr.flipX = false;
         }
+     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
+     Debug.DrawRay(transform.position, Vector2.down, Color.magenta);
 
+     if(hit){
+        puedoSaltar = true;
+        Debug.Log(hit.collider.name);
+     }else{ 
+        puedoSaltar = false;
+     }   
+     
         //SALTO
 
-     RaycastHit2D hit;
-     hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
-     if(hit){
-     Debug.DrawRay(transform.position, Vector2.down, Color.magenta);
      
-     }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(new Vector2(0, 2), ForceMode2D.Impulse);
+     
+     
+        if(Input.GetKeyDown(KeyCode.Space) && puedoSaltar){
+        
+            rb.AddForce(
+                new Vector2(0, multiplicadorSalto),
+                 ForceMode2D.Impulse
+            );
             Debug.Log("salto");
 
         }
-    }
 
+        if(transform.position.y <= -7){
+            Respawnear();
+          }
+    }
+          
+
+
+
+   
+   
+    
 }
