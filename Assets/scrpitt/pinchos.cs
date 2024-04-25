@@ -8,7 +8,7 @@ public class pinchos : MonoBehaviour
     private GameObject personaje;
 
     private Movpersonaje movpersonaje;
-    public static int vidas= 3;
+    
 
     // Start is called before the first frame update
     void Start()

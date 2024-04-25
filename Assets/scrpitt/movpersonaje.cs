@@ -13,7 +13,10 @@ public class Movpersonaje : MonoBehaviour
     public bool puedoSaltar = true;
     
     public void Respawnear(){
-    transform.position = respawn.transform.position;
+        Debug.Log("Vidas: "+GameManager.vidas);
+        GameManager.vidas = GameManager.vidas = 1;
+        Debug.Log("Vidas: "+GameManager.vidas);
+        transform.position = respawn.transform.position;
     }
     GameObject respawn;
 
