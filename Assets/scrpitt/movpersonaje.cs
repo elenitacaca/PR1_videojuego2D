@@ -11,10 +11,10 @@ public class Movpersonaje : MonoBehaviour
     SpriteRenderer sr;
 
     public bool puedoSaltar = true;
-    
+
     public void Respawnear(){
         Debug.Log("Vidas: "+GameManager.vidas);
-        GameManager.vidas = GameManager.vidas = 1;
+        GameManager.vidas -=  1;
         Debug.Log("Vidas: "+GameManager.vidas);
         transform.position = respawn.transform.position;
     }
@@ -26,12 +26,14 @@ public class Movpersonaje : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
         respawn = GameObject.Find("respawn");
-        Respawnear();
+        transform.position = respawn.transform.position;
     }
-
+   
     // Update is called once per frame
     void Update()
     {
+    if(GameManager.estoyMuerto) return;
+        
         //MOVIMIENTO 
         float mov = Input.GetAxis("Horizontal") * multiplicadorVelocidad * Time.deltaTime;
 
@@ -69,10 +71,18 @@ public class Movpersonaje : MonoBehaviour
             Debug.Log("salto");
 
         }
-
+       
         if(transform.position.y <= -7){
             Respawnear();
           }
+         //0 vidas
+          if(GameManager.vidas <= 0)
+          {
+            GameManager.estoyMuerto = true;
+          }
+
+
+
     }
           
 

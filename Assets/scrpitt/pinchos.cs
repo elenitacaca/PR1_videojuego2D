@@ -15,7 +15,7 @@ public class pinchos : MonoBehaviour
     {
         personaje = GameObject.Find("Personaje");
         movpersonaje = personaje.GetComponent<Movpersonaje>();
-        movpersonaje.Respawnear();
+       // movpersonaje.Respawnear();
     }
 
     // Update is called once per frame

@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class fuego : MonoBehaviour
 {
-    public static int vidas= 3;
-    public static bool estoyMuerto = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +13,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(0,01f, 0, 0);
     }
 }
