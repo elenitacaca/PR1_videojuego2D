@@ -12,6 +12,8 @@ public class Movpersonaje : MonoBehaviour
 
     public bool puedoSaltar = true;
 
+    public bool miraDerecha = true;
+
     public void Respawnear(){
         Debug.Log("Vidas: "+GameManager.vidas);
         GameManager.vidas -=  1;
@@ -42,10 +44,12 @@ public class Movpersonaje : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             sr.flipX = true;
+            miraDerecha = false;
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             sr.flipX = false;
+            miraDerecha = true;
         }
      RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
      Debug.DrawRay(transform.position, Vector2.down, Color.magenta);
