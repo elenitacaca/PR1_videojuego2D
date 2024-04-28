@@ -28,7 +28,7 @@ public class fuego : MonoBehaviour
         if(bolaDerecha){
             transform.Translate(speedBala * Time.deltaTime, 0, 0, Space.World);
         }else{
-            transform.Translate((speedBala * Time.deltaTime)*-1, 0, 0);
+            transform.Translate((speedBala * Time.deltaTime)*-1, 0, 0, Space.World);
         }
         
         Debug.Log(Time.time);
