@@ -19,6 +19,7 @@ public class fuego : MonoBehaviour
         personaje = GameObject.Find("Personaje");
         bolaDerecha = personaje.GetComponent<Movpersonaje>().miraDerecha;
         queHoraEs = Time.time;
+        AudioManager.Instance.SonarClipUnaVez(AudioManager.Instance.fxFire);
     }
 
     // Update is called once per frame
@@ -44,6 +45,7 @@ public class fuego : MonoBehaviour
     if(col.gameObject.tag == "Enemigo"){
        Destroy(col.gameObject);
        GameManager.muertes +=1;
+       
        Destroy(this.gameObject);
        }
 

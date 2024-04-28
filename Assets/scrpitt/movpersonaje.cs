@@ -18,6 +18,7 @@ public class Movpersonaje : MonoBehaviour
         Debug.Log("Vidas: "+GameManager.vidas);
         GameManager.vidas -=  1;
         Debug.Log("Vidas: "+GameManager.vidas);
+        AudioManager.Instance.SonarClipUnaVez(AudioManager.Instance.fxDead);
         transform.position = respawn.transform.position;
     }
     GameObject respawn;

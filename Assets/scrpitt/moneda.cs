@@ -21,7 +21,8 @@ public class moneda : MonoBehaviour
          Debug.Log(col.gameObject.name);
 
          if(col.gameObject.name == "Personaje"){
-
+            GameManager.puntos += 1;
+            AudioManager.Instance.SonarClipUnaVez(AudioManager.Instance.fxCoin);
             Destroy(this.gameObject);
         }
 

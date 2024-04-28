@@ -29,7 +29,7 @@ public class pinchos : MonoBehaviour
 
         if(col.name == "Personaje") 
         {
-
+          AudioManager.Instance.SonarClipUnaVez(AudioManager.Instance.fxDead);
           movpersonaje.Respawnear();
         } 
          
